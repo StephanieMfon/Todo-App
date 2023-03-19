@@ -6,47 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:wght@400;700&family=Lobster&family=Pacifico&family=Sue+Ellen+Francisco&display=swap" rel="stylesheet">
     <title>Todo App</title>
 </head>
 
 <body>
     <div class="container">
         <header class="todo-header">
-            <h1>Todo</h1>
-<!-- Input background toggle button here -->
-            <img class="todo-background-toggle-imgage" src="" alt="">
+           <div id="header">
+            <div>
+                <h1>T<span class="special">O</span>DO</h1>
+                <p id="date"></p>
+            </div>
+            <div class="toggle-theme">
+                <div>
+                    <img class="todo-background-toggle-image off active" src="/images/off-bulb.png" alt="swich to light mode">
+                    <img class="todo-background-toggle-image on " src="/images/lightbulb-png-830.png" alt="switch to dark mode">
+                </div>
+                <div>
+                    <img src="images/off-switch.png" class="off-switch current" alt=" off switch">
+                    <img src="images/on-switch.png" class="on-switch" alt=" on switch">
+                </div>
+            </div>
+           </div>
         </header>
 
         <main>
-            <div class="todo-add-item">
+            <div class="dark todo-add-item flex">
                 <button class="add-item-btn">+</button>
                 <form id="Form">
-                    <input type="text" class="todo-add-item-input">
+                    <input type="text" id="add-item-input" class="todo-add-item-input" placeholder="What do you want to get done?">
                 </form>
             </div>
 
             <div class="todo-list">
 
             </div>
-
-            <div class="menu-items">
-                <div class="corner">
-                    <button class="show-total-items-btn"></button>
-                </div>
-                <div>
-                    <button class="show-all-items-btn">All</button>
-                    <button class="show-active-items-btn">Active</button>
-                    <button class="show-completed-items-btn">Completed</button>
-                </div>
-                <div>
-                    <button>Clear Completed</button>
-                </div>
-            </div>
         </main>
 
         <footer>
             <span>
-                <p>Drag and drop to reorder list</p>
+                <!-- <p>Drag and drop to reorder list</p> -->
             </span>
         </footer>
     </div>

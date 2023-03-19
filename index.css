@@ -1,0 +1,273 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    /* background-image: linear-gradient(to bottom, #323663 0vh, #323663 49vh, #161722 50.5vh, #161722 100vh ); */
+    background-image: linear-gradient(to bottom, #323663 0%, #323663 49%, #161722 50.5%, #161722 100%);
+
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto 0 auto;
+    padding: 5em 0 0 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.todo-item {
+    display: flex;
+}
+
+.dark {
+    background-color: #25273c;
+}
+
+.todo-add-item {
+    padding: 10px;
+    margin-block-end: 30px;
+    border-radius: 0.5rem;
+    gap: 0.8em;
+}
+
+.todo-background-toggle-image {
+    width: 20px;
+    display: none;
+}
+
+.on {
+    width: 26px;
+}
+
+.off-switch,
+.on-switch {
+    width: 100px;
+    display: none;
+}
+
+.active,
+.current {
+    display: block;
+}
+
+header {
+    margin: 0 0 1.6em 0;
+}
+
+header #header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header h1 {
+    color: #bcc2f3;
+}
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.8em;
+    letter-spacing: 12px;
+    margin: 0 0 0.1em 0;
+}
+
+#header p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7em;
+    color: #bcc3f36b;
+
+    /* margin:0 0 2em 0; */
+
+}
+
+.toggle-theme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-item-btn,
+.edit-button,
+.remove-button {
+    border: 1px solid #8388af79;
+    background-color: transparent;
+    color: #bcc2f3;
+    padding: 5px;
+    border-radius: 100%;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-image: linear-gradient(#8388af79, #8388af79, #323663);
+}
+
+.edit-button,
+.remove-button {
+    margin: 0 0.5em 0 0;
+    height: 35px;
+}
+
+.remove-button {
+    width: 30px;
+}
+
+.edit-button {
+    font-family: 'Lobster', sans-serif;
+    color: #bcc3f328;
+}
+
+input,
+textarea {
+    background-color: transparent;
+    height: 3em;
+    /* width: 60em; */
+    outline: none;
+    border: none;
+    font-size: 1.2em;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+input {
+    min-width: 140%;
+}
+
+input {
+    color: #ffffff;
+}
+
+::placeholder {
+    color: #bcc3f346;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #bcc3f36b;
+}
+
+::-ms-input-placeholder {
+    color: #bcc3f36b;
+}
+
+.todo-item {
+    border-bottom: 1px solid #bcc3f328;
+    padding: 2em 0 0 0.9em;
+}
+
+.todo-item:first-of-type {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.todo-item:last-of-type {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border: none;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #bcc3f328;
+    border-radius: 50%;
+    margin-inline-end: 0.7em;
+}
+
+textarea {
+    color: #bcc2f3;
+    width: 100%;
+    resize: none;
+}
+
+/* light mode */
+
+.light {
+    background-color: #f2d184;
+    background-image: linear-gradient(to bottom, #f2d184 0%, #f2d184 49%, #faf2e0 50.5%, #faf2e0 100%);
+
+}
+
+.light #header h1 {
+    color: #866118;
+
+}
+
+.light #header p {
+    color: #866118ab;
+}
+
+.light .dark {
+    background-color: #faf2e0;
+    color: #866118ab;
+}
+
+.light textarea,
+.light input,
+.light #add-item-input {
+    color: #866118ea;
+}
+
+.light input::placeholder {
+    color: #8661183a;
+}
+
+.light .add-item-btn,
+.light .edit-button,
+.light .remove-button {
+    color: #866118ab;
+    border: 1px solid #866118ab;
+}
+
+.light button:hover {
+    background-image: linear-gradient(#86611857, #86611857, #86611857);
+}
+
+.light .todo-item {
+    border-bottom: 1px solid #8661183a;
+}
+
+.light .circle {
+    border: 1px solid #86611852;
+}
+
+.light .todo-list {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.light div .todo-item:last-of-type {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border: none;
+}
+
+/* Responsive section */
+
+@media screen and (min-width: 950px) {
+    .container {
+        width: 70%;
+    }
+
+    input {
+        width: 14em;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .container {
+        width: 50%;
+    }
+
+    input {
+        width: 20em;
+    }
+}

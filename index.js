@@ -1,19 +1,17 @@
-// Play script
+// Show Current Date
+const dateformat = new Date();
+document.getElementById("date").innerText = dateformat;
 
-// what exactly am i trying to do?
-/*
-First when we click on button if add-input is not empty or null then push the item as an array into an array and store item in local storage
-
-FUNCTIONALITIES
-Add items 
-remove items  
-edit items
-swap items
-*/
-
+// Add New Todo Item
 const addItemsBtn = document.querySelector(".add-item-btn");
 const addItemsInput = document.querySelector(".todo-add-item-input");
 
+// Update todo list
+window.addEventListener("load", () => {
+  showItems();
+});
+
+// Add New Todo Item
 addItemsBtn.addEventListener("click", () => {
   let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
   if (addItemsInput.value.length > 0) {
@@ -23,20 +21,23 @@ addItemsBtn.addEventListener("click", () => {
   }
   showItems();
 });
+addItemsInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addItemsBtn.click();
+  }
+});
 
-let allButtons;
-// localStorage.removeItem("todoList");
+// Show items/Update App
 const showItems = () => {
   const todoList = JSON.parse(localStorage.getItem("todoList"));
-
   let mapped = todoList.map((item) => {
-    return `<div><div><input type="checkbox"><textarea id="main-text">${item}</textarea><button class="remove-button" onclick="removeItem()">-</button></div></div`;
+    return `<div class="todo-items-wrapper"><div class="todo-item dark"><div class="circle"></div><textarea id="main-text">${item}</textarea><button class="edit-button">Save</button><button class="remove-button" onclick="removeItem()">-</button></div></div`;
   });
-
   document.querySelector(".todo-list").innerHTML = mapped;
   allButtons = document.querySelectorAll(".remove-button");
-
-  // try to make a function inside then take it out and pass it here to collect the all buttons input
+  editButtons = document.querySelectorAll(".edit-button");
+  editItem(editButtons);
   removeItem(allButtons);
 };
 
@@ -45,64 +46,66 @@ const removeItem = (allButtons) => {
   let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
   buttonArray.map((button, i) => {
     button.onclick = () => {
-      console.log(i);
-      todoListItems.splice(i, 1);
-      buttonArray.splice(i, 1);
-
-      console.log(buttonArray);
-      console.log(todoListItems);
+      // todoListItems.splice(i, 1);
+      // buttonArray.splice(i, 1);
+      removeFunction(i);
       localStorage.setItem("todoList", JSON.stringify(todoListItems));
     };
     button.addEventListener("click", () => {
       showItems();
     });
   });
-
-  // let mapped = todoListItems.map((item) => {
-  //   return `<div><div><input type="checkbox"><textarea id="main-text">${item}</textarea><button class="remove-button" onclick="removeItem()">-</button></div></div`;
-  // });
-
-  // document.querySelector(".todo-list").innerHTML = mapped;
-
-  // let todoListItems2 = JSON.parse(localStorage.getItem("todoList")) || [];
-  // console.log(todoListItems2);
 };
 
-// TRIAL 1
+const removeFunction = (i) => {
+  todoListItems.splice(i, 1);
+  buttonArray.splice(i, 1);
+};
 
-// // let list = document.createElement("ul");
-// // let listItem = document.createElement("li");
-// let inputItem = document.createElement("INPUT");
-// // let inputText = document.createElement("p");
-// inputItem.setAttribute("type", "text");
-// inputItem.textContent = "bpop";
+// Edit Items
+// const editItem = (editButtons) => {
+//   let buttonsArray = Array.from(editButtons);
+//   let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
+//   console.log(todoListItems);
+//   buttonsArray.map((button, i) => {
+//     button.onclick = () => {
+//       const editedValue = button.previousElementSibling.value;
+//       todoListItems.splice(i, 1);
+//       todoListItems.splice(0, 0, editedValue);
+//       localStorage.setItem("todoList", JSON.stringify(todoListItems));
+//     };
+//     button.addEventListener("click", () => {
+//       showItems();
+//     });
+//   });
+// };
 
-// for (let item of todoList) {
-//   return todo.append(`${inputItem}`);
-// }
-// return (todo.innerHTML = `<div><textarea>${el.newTodoNote}</textarea></div>`);
+//Activate light mode
 
-// .join("\n");
+const darkMode = document.querySelector(".off");
+const lightMode = document.querySelector(".on");
+const switchOff = document.querySelector(".off-switch");
+const switchOn = document.querySelector(".on-switch");
+const body = document.body;
 
-// list.append(listItem);
-// listItem.appendChild(inputText);
-// todo.append(list);
-// return singleItem;
+darkMode.addEventListener("click", () => {
+  if (lightMode.classList.contains("on")) {
+    lightMode.classList.add("active");
+    darkMode.classList.remove("active");
 
-// TRIAL 2
+    switchOn.classList.add("current");
+    switchOff.classList.remove("current");
+    body.classList.toggle("light");
+  }
+});
 
-// console.log(todoList);
-// const todo = document.querySelector(".todo-list");
-// console.log(todoList);
-// let div;
-// let divs = todoList.map((el) => {
-//   div = document.createElement("div");
+lightMode.addEventListener("click", () => {
+  if (darkMode.classList.contains("off")) {
+    darkMode.classList.add("active");
+    lightMode.classList.remove("active");
 
-//   div.textContent = `${el.newTodoNote}`;
-//   console.log(el.newTodoNote);
-//   return div;
-// todo.appendChild(div);
-// });
-
-// todo.append(...divs);
-// showItems()
+    switchOff.classList.add("current");
+    switchOn.classList.remove("current");
+    body.classList.toggle("light");
+  }
+});
