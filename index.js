@@ -83,7 +83,7 @@ const switchOff = document.querySelector(".off-switch");
 const switchOn = document.querySelector(".on-switch");
 const body = document.body;
 
-darkMode.addEventListener("click", () => {
+const activateLightMode = () => {
   if (lightMode.classList.contains("on")) {
     lightMode.classList.add("active");
     darkMode.classList.remove("active");
@@ -92,9 +92,12 @@ darkMode.addEventListener("click", () => {
     switchOff.classList.remove("current");
     body.classList.toggle("light");
   }
-});
+};
 
-lightMode.addEventListener("click", () => {
+darkMode.addEventListener("click", activateLightMode);
+switchOff.addEventListener("click", activateLightMode);
+
+const activateDarkMode = () => {
   if (darkMode.classList.contains("off")) {
     darkMode.classList.add("active");
     lightMode.classList.remove("active");
@@ -103,4 +106,6 @@ lightMode.addEventListener("click", () => {
     switchOn.classList.remove("current");
     body.classList.toggle("light");
   }
-});
+};
+lightMode.addEventListener("click", activateDarkMode);
+switchOn.addEventListener("click", activateDarkMode);

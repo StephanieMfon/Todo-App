@@ -44,16 +44,18 @@ img {
 .todo-background-toggle-image {
     width: 20px;
     display: none;
+    cursor: pointer;
 }
 
 .on {
-    width: 26px;
+    width: 28px;
 }
 
 .off-switch,
 .on-switch {
     width: 100px;
     display: none;
+    cursor:pointer;
 }
 
 .active,
@@ -85,9 +87,6 @@ h1 {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 0.7em;
     color: #bcc3f36b;
-
-    /* margin:0 0 2em 0; */
-
 }
 
 .toggle-theme {
