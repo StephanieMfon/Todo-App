@@ -31,6 +31,7 @@ addItemsInput.addEventListener("keypress", (e) => {
 // Show items/Update App
 const showItems = () => {
   const todoList = JSON.parse(localStorage.getItem("todoList"));
+
   let mapped = todoList.map((item) => {
     return `<div class="todo-items-wrapper"><div class="todo-item dark"><div class="circle"></div><textarea id="main-text">${item}</textarea><button class="edit-button">Save</button><button class="remove-button" onclick="removeItem()">-</button></div></div`;
   });
@@ -46,9 +47,8 @@ const removeItem = (allButtons) => {
   let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
   buttonArray.map((button, i) => {
     button.onclick = () => {
-      // todoListItems.splice(i, 1);
-      // buttonArray.splice(i, 1);
-      removeFunction(i);
+      todoListItems.splice(i, 1);
+      buttonArray.splice(i, 1);
       localStorage.setItem("todoList", JSON.stringify(todoListItems));
     };
     button.addEventListener("click", () => {
@@ -57,28 +57,23 @@ const removeItem = (allButtons) => {
   });
 };
 
-const removeFunction = (i) => {
-  todoListItems.splice(i, 1);
-  buttonArray.splice(i, 1);
-};
-
 // Edit Items
-// const editItem = (editButtons) => {
-//   let buttonsArray = Array.from(editButtons);
-//   let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
-//   console.log(todoListItems);
-//   buttonsArray.map((button, i) => {
-//     button.onclick = () => {
-//       const editedValue = button.previousElementSibling.value;
-//       todoListItems.splice(i, 1);
-//       todoListItems.splice(0, 0, editedValue);
-//       localStorage.setItem("todoList", JSON.stringify(todoListItems));
-//     };
-//     button.addEventListener("click", () => {
-//       showItems();
-//     });
-//   });
-// };
+const editItem = (editButtons) => {
+  let buttonsArray = Array.from(editButtons);
+  let todoListItems = JSON.parse(localStorage.getItem("todoList")) || [];
+  console.log(todoListItems);
+  buttonsArray.map((button, i) => {
+    button.onclick = () => {
+      const editedValue = button.previousElementSibling.value;
+      todoListItems.splice(i, 1);
+      todoListItems.splice(0, 0, editedValue);
+      localStorage.setItem("todoList", JSON.stringify(todoListItems));
+    };
+    button.addEventListener("click", () => {
+      showItems();
+    });
+  });
+};
 
 //Activate light mode
 
