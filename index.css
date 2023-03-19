@@ -3,13 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-body,html{
-    width: 100vh;
-    min-width: 100vh;
-    max-width: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+
 body {
     min-height: 100vh;
     /* background-image: linear-gradient(to bottom, #323663 0vh, #323663 49vh, #161722 50.5vh, #161722 100vh ); */
